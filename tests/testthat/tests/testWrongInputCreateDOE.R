@@ -1,0 +1,16 @@
+app <- ShinyDriver$new("../", seed = 1)
+app$snapshotInit("testWrongInputCreateDOE")
+
+
+app$setInputs(tabs = "spotConfig")
+app$setInputs(tabs = "objectiveFunction")
+app$setInputs(tabs = "spotConfig")
+app$setInputs(xml_designLHDcontrol = TRUE)
+app$setInputs(xml_designLHDcontrolsize = "cflbre")
+app$setInputs(tabs = "runMode")
+app$setInputs(runCreateDOE = "click")
+app$setInputs(tabs = "spotConfig")
+app$setInputs(xml_designLHDcontrolsize = 10)
+app$setInputs(tabs = "runMode")
+app$setInputs(runCreateDOE = "click")
+app$snapshot(list(output = "resultTable"))

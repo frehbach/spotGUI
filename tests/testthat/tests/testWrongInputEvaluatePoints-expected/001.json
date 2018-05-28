@@ -1,0 +1,170 @@
+{
+  "output": {
+    "resultTable": {
+      "x": {
+        "data": [
+          {
+            "x1": 0.283,
+            "x2": 0.507,
+            "results": null
+          },
+          {
+            "x1": 0.367,
+            "x2": 0.71,
+            "results": null
+          },
+          {
+            "x1": 0.079,
+            "x2": 0.032,
+            "results": null
+          },
+          {
+            "x1": 0.911,
+            "x2": 0.352,
+            "results": null
+          },
+          {
+            "x1": 0.572,
+            "x2": 0.466,
+            "results": null
+          },
+          {
+            "x1": 0.141,
+            "x2": 0.641,
+            "results": null
+          },
+          {
+            "x1": 0.482,
+            "x2": 0.191,
+            "results": null
+          },
+          {
+            "x1": 0.865,
+            "x2": 0.229,
+            "results": null
+          },
+          {
+            "x1": 0.778,
+            "x2": 0.846,
+            "results": null
+          },
+          {
+            "x1": 0.655,
+            "x2": 0.933,
+            "results": null
+          }
+        ],
+        "rClass": "data.frame",
+        "rColClasses": {
+          "x1": "numeric",
+          "x2": "numeric",
+          "results": "numeric"
+        },
+        "rColnames": [
+          "x1",
+          "x2",
+          "results"
+        ],
+        "rColHeaders": [
+          "x1",
+          "x2",
+          "results"
+        ],
+        "rRowHeaders": null,
+        "rDataDim": [
+          10,
+          3
+        ],
+        "selectCallback": false,
+        "colHeaders": [
+          "x1",
+          "x2",
+          "results"
+        ],
+        "rowHeaders": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "columns": [
+          {
+            "type": "numeric",
+            "numericFormat": {
+              "pattern": "0.00"
+            },
+            "renderer": "customRenderer",
+            "default": null
+          },
+          {
+            "type": "numeric",
+            "numericFormat": {
+              "pattern": "0.00"
+            },
+            "renderer": "customRenderer",
+            "default": null
+          },
+          {
+            "type": "numeric",
+            "numericFormat": {
+              "pattern": "0.00"
+            },
+            "renderer": "customRenderer",
+            "default": null
+          }
+        ],
+        "width": null,
+        "height": null,
+        "debug": 0,
+        "search": false,
+        "stretchH": "all",
+        "comments": false,
+        "contextMenu": {
+          "items": {
+            "row_above": [
+
+            ],
+            "row_below": [
+
+            ],
+            "remove_row": [
+
+            ],
+            "hsep3": {
+              "name": "---------"
+            },
+            "undo": [
+
+            ],
+            "redo": [
+
+            ],
+            "hsep4": {
+              "name": "---------"
+            },
+            "alignment": [
+
+            ]
+          }
+        }
+      },
+      "evals": [
+        "columns.0.renderer",
+        "columns.1.renderer",
+        "columns.2.renderer"
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+
+      ]
+    }
+  }
+}

@@ -1,0 +1,13 @@
+app <- ShinyDriver$new("../", seed = 1)
+app$snapshotInit("basicSpotThenDOEThenSPOT")
+
+app$setInputs(tabs = "spotConfig")
+app$setInputs(tabs = "runMode")
+app$setInputs(runSpotIter = "click")
+app$setInputs(tabs = "spotConfig")
+app$setInputs(tabs = "runMode")
+app$setInputs(runCreateDOE = "click")
+app$setInputs(evaluateData = "click")
+app$setInputs(runSpotIter = "click")
+Sys.sleep(10)
+app$snapshot(list(output = "resultTable"))
