@@ -17,6 +17,6 @@ app$setInputs(evaluateData = "click")
 app$setInputs(proposeNewPoint = "click")
 app$setInputs(evaluateData = "click")
 app$setInputs(selectorXAUTO = "X4")
-Sys.sleep(10)
+Sys.sleep(5)
 app$snapshot(list(output = "resultTable"))
 
