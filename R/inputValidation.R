@@ -5,6 +5,7 @@
 #' @param input GUi Inputs
 #'
 #' @return T for correct user input, F for a faulty configuration
+#' @keywords internal
 checkInputBounds <- function(input){
     return(!any(sapply(c(getBounds(input)[[1]],getBounds(input)[[2]]),is.na)))
 }
@@ -17,6 +18,7 @@ checkInputBounds <- function(input){
 #' @param input GUI Inputs
 #'
 #' @return T for correct user input, F for a faulty configuration
+#' @keywords internal
 checkInputObjectiveFunction <- function(input){
     objFun <- getObjectiveFunction(input, asText = T)
 
@@ -36,6 +38,7 @@ checkInputObjectiveFunction <- function(input){
 #' @param input GUi Inputs
 #'
 #' @return T for correct user input, F for a faulty configuration
+#' @keywords internal
 checkInputCorrectness <- function(input){
     inputsCorrect <- 0
 

@@ -3,6 +3,7 @@
 #' Package Data Environment
 #'
 #' Data Environment for storage and variable exchange between functions
+#' @keywords internal
 packageDataEnv <- new.env()
 
 #' Access a variable in the packageData Environment

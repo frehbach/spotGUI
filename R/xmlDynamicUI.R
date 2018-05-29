@@ -1,6 +1,7 @@
 #' Get root element of the config.xml file of this package
 #'
 #' @return list of xml elements
+#' @keywords internal
 xmlGetRootElement <- function(){
     packageName <- methods::getPackageName(packageDataEnv)
     xmlInfo <- xmlParse(system.file("config.xml", package=packageName))
@@ -16,6 +17,7 @@ xmlGetRootElement <- function(){
 #'
 #' @return List with all configured optimizers, designGenerators and modelBuilders,
 #' as well as their respective parameters.
+#' @keywords internal
 xmlGetAllConfiguredControlElements <- function(){
     xmlList <- xmlGetRootElement()
     if(is.null(xmlList)){
