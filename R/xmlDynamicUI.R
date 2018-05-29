@@ -1,5 +1,5 @@
 xmlGetRootElement <- function(){
-    xmlInfo <- xmlParse(system.file("spotConfig.xml", package="spotGUI"))
+    xmlInfo <- xmlParse(system.file("config.xml", package="spotGUI"))
     xmlList <- xmlToList(xmlInfo)
     xmlList
 }
