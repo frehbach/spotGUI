@@ -19,6 +19,9 @@
 #' @import shinyBS
 #' @importFrom tools Rd_db
 #' @importFrom httpuv service
+#' @importFrom utils capture.output
+#' @importFrom utils installed.packages
+#' @importFrom methods getPackageName
 #'
 #' @export
 runSpotGUI <- function() {

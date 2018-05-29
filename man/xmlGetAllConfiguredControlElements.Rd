@@ -11,9 +11,7 @@ List with all configured optimizers, designGenerators and modelBuilders,
 as well as their respective parameters.
 }
 \description{
-Parses the spotconfig xml file. Reads all entries for optimizers, designGenerators and modelBuilders.
-For each configured entrie, a list with the entries name and all of its configurable parameters is returned.
-}
-\examples{
-spotGUI:::xmlGetAllConfiguredControlElements()
+Parses the config.xml file. Reads all entries for optimizers, designGenerators and modelBuilders.
+For each configured entry, a list with the entries name and all of its configurable
+parameters is returned.
 }

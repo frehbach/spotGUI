@@ -2,7 +2,7 @@
 #'
 #' @return list of xml elements
 xmlGetRootElement <- function(){
-    packageName <- getPackageName(packageDataEnv)
+    packageName <- methods::getPackageName(packageDataEnv)
     xmlInfo <- xmlParse(system.file("config.xml", package=packageName))
     return(xmlToList(xmlInfo))
 }
