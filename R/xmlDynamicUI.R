@@ -1,7 +1,10 @@
+#' Get root element of the config.xml file of this package
+#'
+#' @return list of xml elements
 xmlGetRootElement <- function(){
-    xmlInfo <- xmlParse(system.file("config.xml", package="spotGUI"))
-    xmlList <- xmlToList(xmlInfo)
-    xmlList
+    packageName <- getPackageName(packageDataEnv)
+    xmlInfo <- xmlParse(system.file("config.xml", package=packageName))
+    return(xmlToList(xmlInfo))
 }
 
 
