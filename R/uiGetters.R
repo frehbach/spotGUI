@@ -60,19 +60,20 @@ getObjectiveFunction <- function(input, asText = F){
         funName <- input$smoofFunctionSelector
         if(!asText){
             funName <- getSmoofFunByName(funName,input)
-            return(SPOT::wrapFunction(funName))
+            fun <- SPOT::wrapFunction(funName)
         }else{
-            return(paste0("SPOT::wrapFunction(smoof::makeFunctionsByName(\"",
-                   fun, "\", dimensions = ", getNDim(input), ")[[1]])"))
+            fun <- paste0("SPOT::wrapFunction(smoof::makeFunctionsByName(\"",
+                          funName, "\", dimensions = ", getNDim(input), ")[[1]])")
         }
     }else{
         if(fun == "rEnv"){
-            return(input$funName)
+            fun <- input$funName
         }
         if(!asText){
-            return(get(fun))
+            fun <- get(fun)
         }
     }
+    return(fun)
 }
 
 # returns the user selected model

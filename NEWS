@@ -1,0 +1,15 @@
+spotGUI v0.2.0 (Release date: 2018-05-31)
+==============
+
+Changes:
+
+* Added 'funBranin' and 'funRastrigin' as SPOT-internal test functions
+* Added support for the 'smoof'-package / the 'smoof'-test functions
+* Minor changes in the documentation
+
+spotGUI v0.1.1 (Release date: 2018-05-29)
+==============
+
+Changes:
+
+* Initial version on CRAN

@@ -1,0 +1,216 @@
+{
+  "output": {
+    "resultTable": {
+      "x": {
+        "data": [
+          {
+            "x1": -2.225,
+            "x2": 0.072,
+            "x3": 1.512,
+            "x4": 2.779,
+            "results": 52.566
+          },
+          {
+            "x1": -1.363,
+            "x2": 2.15,
+            "x3": -2.158,
+            "x4": -3.203,
+            "results": 53.681
+          },
+          {
+            "x1": -4.307,
+            "x2": -4.796,
+            "x3": -1.163,
+            "x4": 0.455,
+            "results": 88.144
+          },
+          {
+            "x1": 4.207,
+            "x2": -1.517,
+            "x3": 0.399,
+            "x4": -4.59,
+            "results": 104.981
+          },
+          {
+            "x1": 0.741,
+            "x2": -0.346,
+            "x3": -4.324,
+            "x4": 3.811,
+            "results": 80.88
+          },
+          {
+            "x1": -3.675,
+            "x2": 1.441,
+            "x3": -0.04,
+            "x4": 1.605,
+            "results": 70.24
+          },
+          {
+            "x1": -0.183,
+            "x2": -3.161,
+            "x3": -3.651,
+            "x4": -0.345,
+            "results": 65.582
+          },
+          {
+            "x1": 3.735,
+            "x2": -2.771,
+            "x3": 3.802,
+            "x4": -1.647,
+            "results": 81.274
+          },
+          {
+            "x1": 2.85,
+            "x2": 3.542,
+            "x3": 4.506,
+            "x4": 4.27,
+            "results": 114.255
+          },
+          {
+            "x1": 1.59,
+            "x2": 4.436,
+            "x3": 2.381,
+            "x4": -2.007,
+            "results": 86.904
+          }
+        ],
+        "rClass": "data.frame",
+        "rColClasses": {
+          "x1": "numeric",
+          "x2": "numeric",
+          "x3": "numeric",
+          "x4": "numeric",
+          "results": "numeric"
+        },
+        "rColnames": [
+          "x1",
+          "x2",
+          "x3",
+          "x4",
+          "results"
+        ],
+        "rColHeaders": [
+          "x1",
+          "x2",
+          "x3",
+          "x4",
+          "results"
+        ],
+        "rRowHeaders": null,
+        "rDataDim": [
+          10,
+          5
+        ],
+        "selectCallback": false,
+        "colHeaders": [
+          "x1",
+          "x2",
+          "x3",
+          "x4",
+          "results"
+        ],
+        "rowHeaders": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "columns": [
+          {
+            "type": "numeric",
+            "numericFormat": {
+              "pattern": "0.00"
+            },
+            "renderer": "customRenderer",
+            "default": null
+          },
+          {
+            "type": "numeric",
+            "numericFormat": {
+              "pattern": "0.00"
+            },
+            "renderer": "customRenderer",
+            "default": null
+          },
+          {
+            "type": "numeric",
+            "numericFormat": {
+              "pattern": "0.00"
+            },
+            "renderer": "customRenderer",
+            "default": null
+          },
+          {
+            "type": "numeric",
+            "numericFormat": {
+              "pattern": "0.00"
+            },
+            "renderer": "customRenderer",
+            "default": null
+          },
+          {
+            "type": "numeric",
+            "numericFormat": {
+              "pattern": "0.00"
+            },
+            "renderer": "customRenderer",
+            "default": null
+          }
+        ],
+        "width": null,
+        "height": null,
+        "debug": 0,
+        "search": false,
+        "stretchH": "all",
+        "comments": false,
+        "contextMenu": {
+          "items": {
+            "row_above": [
+
+            ],
+            "row_below": [
+
+            ],
+            "remove_row": [
+
+            ],
+            "hsep3": {
+              "name": "---------"
+            },
+            "undo": [
+
+            ],
+            "redo": [
+
+            ],
+            "hsep4": {
+              "name": "---------"
+            },
+            "alignment": [
+
+            ]
+          }
+        }
+      },
+      "evals": [
+        "columns.0.renderer",
+        "columns.1.renderer",
+        "columns.2.renderer",
+        "columns.3.renderer",
+        "columns.4.renderer"
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+
+      ]
+    }
+  }
+}
