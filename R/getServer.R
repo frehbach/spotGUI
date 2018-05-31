@@ -431,7 +431,10 @@ getServer <- function(input, output, session) {
 
     output$objectiveFunctionInputParameters <- renderUI({
         req(input$objectiveFunction)
-        isolate(maxInputDimension(maxInputDimension() + generateInputUI(input, initVariables,configInitiated)))
+        req(input$smoofFunctionSelector)
+        isolate(
+            maxInputDimension(maxInputDimension() +
+                                  generateInputUI(input, initVariables,configInitiated)))
         div()
     })
 

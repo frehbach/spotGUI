@@ -17,6 +17,10 @@
 #' @import rclipboard
 #' @import plotly
 #' @import shinyBS
+#' @importFrom smoof makeFunctionsByName
+#' @importFrom smoof filterFunctionsByTags
+#' @importFrom smoof getLowerBoxConstraints
+#' @importFrom smoof getUpperBoxConstraints
 #' @importFrom tools Rd_db
 #' @importFrom httpuv service
 #' @importFrom utils capture.output

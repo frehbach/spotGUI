@@ -20,13 +20,16 @@ checkInputBounds <- function(input){
 #' @return T for correct user input, F for a faulty configuration
 #' @keywords internal
 checkInputObjectiveFunction <- function(input){
-    objFun <- getObjectiveFunction(input, asText = T)
-
-    if(!exists(objFun)){
-        return(F)
-    }
-    if(!(typeof(get(objFun)) == "closure")){
-        return(F)
+    if(input$objectiveFunction == "smoof"){
+        return(checkSmoofFunScalibility(input$smoofFunctionSelector, input))
+    }else{
+        objFun <- getObjectiveFunction(input, asText = T)
+        if(!exists(objFun)){
+            return(F)
+        }
+        if(!(typeof(get(objFun)) == "closure")){
+            return(F)
+        }
     }
     return(T)
 }
@@ -60,7 +63,10 @@ checkInputCorrectness <- function(input){
         return(F)
     }else if(inputsCorrect == 2){
         showModal(modalDialog(title="Configuration Error","There is an error in the objective
-                              function you specified!\nMaybe it does not exist or is faulty, please check for typos."
+                              function you specified!\n
+                              Maybe it does not exist or is faulty, please check for typos.\n\n
+                              If you are using a 'smoof'-function, please make sure that you don't
+                              acceed the maximum amount of dimensions of the given function."
                               ,footer=NULL,easyClose=T))
         return(F)
     }else{

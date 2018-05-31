@@ -35,7 +35,7 @@ getUIPage <- function(){
                                 uiOutput("objectiveFunctionSelector")
                             ),
                             h3("Dimensions: "),
-                            uiOutput("objectiveFunctionAdditionalSpecifiers"),
+                            #uiOutput("objectiveFunctionAdditionalSpecifiers"),
                             uiOutput("objectiveFunctionInputParameters"),
                             actionButton(inputId = "addDimension",
                                          label = "",icon = icon("plus-circle"))

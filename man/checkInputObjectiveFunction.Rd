@@ -16,3 +16,4 @@ T for correct user input, F for a faulty configuration
 Checks whether or not the user inserted a faulty configuration for an
 objective Function from the R-Environment
 }
+\keyword{internal}

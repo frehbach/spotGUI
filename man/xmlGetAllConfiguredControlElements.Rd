@@ -15,3 +15,4 @@ Parses the config.xml file. Reads all entries for optimizers, designGenerators a
 For each configured entry, a list with the entries name and all of its configurable
 parameters is returned.
 }
+\keyword{internal}

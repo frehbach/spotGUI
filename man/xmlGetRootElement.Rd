@@ -12,3 +12,4 @@ list of xml elements
 \description{
 Get root element of the config.xml file of this package
 }
+\keyword{internal}

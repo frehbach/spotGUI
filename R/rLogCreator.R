@@ -12,6 +12,8 @@ rLogResetMessage <- function(){
         "## -----------------------------------------------",
         "## -----------------------------------------------",
         " ",
+        "library(SPOT)",
+        "library(spotGUI)\n",
         "spotData <- NULL\n\n",
         sep="\n"
     )

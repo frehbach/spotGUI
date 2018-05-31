@@ -56,13 +56,23 @@ getPlotSliderValues <- function(input, mode){
 # returns the user selected objective function
 getObjectiveFunction <- function(input, asText = F){
     fun <- as.character(input$objectiveFunction)
-    if(fun == "rEnv"){
-        fun <- input$funName
+    if(fun == "smoof"){
+        funName <- input$smoofFunctionSelector
+        if(!asText){
+            funName <- getSmoofFunByName(funName,input)
+            return(SPOT::wrapFunction(funName))
+        }else{
+            return(paste0("SPOT::wrapFunction(smoof::makeFunctionsByName(\"",
+                   fun, "\", dimensions = ", getNDim(input), ")[[1]])"))
+        }
+    }else{
+        if(fun == "rEnv"){
+            return(input$funName)
+        }
+        if(!asText){
+            return(get(fun))
+        }
     }
-    if(!asText){
-        fun <- get(fun)
-    }
-    fun
 }
 
 # returns the user selected model

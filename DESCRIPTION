@@ -21,6 +21,7 @@ Encoding: UTF-8
 LazyData: true
 Depends:
     R (>= 3.1.0),
+    smoof
 Imports:
     shinyBS,
     shiny,

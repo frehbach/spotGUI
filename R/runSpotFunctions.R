@@ -21,8 +21,9 @@ doSpotIter <- function(input,lastSpotIter,ctrl,bounds, doAll = F){
         designSize <- controlList$designControl$size
         localControlList <- controlList
         localControlList$funEvals <- designSize
+        objFun <- getObjectiveFunction(input)
         resultList <- spot(lower = bounds[[1]], upper = bounds[[2]],
-                           fun = getObjectiveFunction(input)
+                           fun = objFun
                            ,control = localControlList)
         return(resultList)
     }

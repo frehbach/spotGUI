@@ -11,4 +11,4 @@ packageDataEnv
 \description{
 Data Environment for storage and variable exchange between functions
 }
-\keyword{datasets}
+\keyword{internal}

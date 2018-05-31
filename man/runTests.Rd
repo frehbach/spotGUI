@@ -9,3 +9,4 @@ runTests()
 \description{
 Runs package tests including many GUI scenarios
 }
+\keyword{internal}

@@ -15,3 +15,4 @@ T for correct user input, F for a faulty configuration
 \description{
 Checks whether or not the user inserted a faulty configuration for the dimension/bounds
 }
+\keyword{internal}

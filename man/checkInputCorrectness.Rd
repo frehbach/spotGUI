@@ -15,3 +15,4 @@ T for correct user input, F for a faulty configuration
 \description{
 Main Input checking function, calls all subChecks and creates User-Dialogs for the respective problems.
 }
+\keyword{internal}

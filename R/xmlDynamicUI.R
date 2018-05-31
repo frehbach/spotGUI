@@ -180,37 +180,61 @@ getObjectiveFunctionSelectorXML <- function(input){
 
     list(
         selectInput("objectiveFunction", "Objective function:",
-                list("SPOT-Internal Functions" = funList
-                                ,"External Functions" =
-                                list("Function from R-Environment" = "rEnv")
-                     ,"No Objective Function" = list("Manual Input" = "mInput"))),
+                    list("SPOT-Internal Functions:" = funList
+                         ,"Other:" =
+                             list("Function from R-Environment" = "rEnv",
+                                  "Smoof - Test Functions" = "smoof",
+                                  "Manual Input" = "mInput"))),
         conditionalPanel(condition = "input.objectiveFunction == 'rEnv'"
-                         , textInput("funName","Name of Function in Environment"))
+                         , textInput("funName","Name of Function in Environment")),
+        conditionalPanel(condition = "input.objectiveFunction == 'smoof'"
+                         , selectInput("smoofFunctionSelector","Select Smoof Function",
+                                       choices = getAllSmoofFunctions()))
 
     )
 }
 
 generateInputUI <- function(input,initVariables,configInitiated){
     assign("inputDimensions", NULL, envir=spotGuiEnv)
-    if((input$objectiveFunction == "rEnv") | (input$objectiveFunction == "mInput")){
-        selectedElement <- NULL
-    }else{
-        selectedElement <- getSelectedElementList(groupString = "objectiveFunction",
-                                                  selectedInput = input[["objectiveFunction"]],input = input)
-    }
-
-    amountOfGeneratedElements <- 0
-    ##Generate UI element for each dimension
-    if(length(selectedElement) >=3){
-        for(i in 3:length(selectedElement)){
+    if((input$objectiveFunction == "rEnv") |
+       (input$objectiveFunction == "mInput")){
+        return(0)
+    }else if(input$objectiveFunction == "smoof"){
+        #return(0)
+        amountOfGeneratedElements <- 0
+        lowerBounds <- getSmoofFunLowerBounds(input$smoofFunctionSelector)
+        upperBounds <- getSmoofFunUpperBounds(input$smoofFunctionSelector)
+        for(i in 1:length(lowerBounds)){
             insertUI(
                 selector = '#objectiveFunctionInputParameters',
                 where = "beforeEnd",
-                ui = createDimensionElement(input,selectedElement[[i]], i-2,initVariables,configInitiated))
+                ui = createDimensionElement(input,
+                                            list(name=paste0("X",i),
+                                                 type="numeric",
+                                                 lower=lowerBounds[i],
+                                                 upper=upperBounds[i],
+                                                 amount=1), i,
+                                            initVariables,
+                                            configInitiated))
             amountOfGeneratedElements <- amountOfGeneratedElements + 1
         }
+        return(amountOfGeneratedElements)
+    }else{
+        selectedElement <- getSelectedElementList(groupString = "objectiveFunction",
+                                                  selectedInput = input[["objectiveFunction"]],input = input)
+        amountOfGeneratedElements <- 0
+        ##Generate UI element for each dimension
+        if(length(selectedElement) >=3){
+            for(i in 3:length(selectedElement)){
+                insertUI(
+                    selector = '#objectiveFunctionInputParameters',
+                    where = "beforeEnd",
+                    ui = createDimensionElement(input,selectedElement[[i]], i-2,initVariables,configInitiated))
+                amountOfGeneratedElements <- amountOfGeneratedElements + 1
+            }
+        }
+        return(amountOfGeneratedElements)
     }
-    return(amountOfGeneratedElements)
 }
 
 createDimensionElement <- function(input,listElement, index, initVariables, configInitiated){
