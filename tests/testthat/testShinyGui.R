@@ -13,4 +13,4 @@ runGUITests <- function(testNames){
 runGUITests(c("basicRunSpot","basicCreateDOE","basicSpotThenDOEThenSPOT","3dimBranin",
               "testGenoud4DimRF","testBranin_RF_LBFGSB_UR","testWrongInputInBounds",
               "testWrongEnvironmentFunction","testWrongInputCreateDOE","testWrongInputEvaluatePoints",
-              "testWrongInputProposeNewPoint","testOnlyRLog"))
+              "testWrongInputProposeNewPoint","testOnlyRLog","testFunRastrigin"))

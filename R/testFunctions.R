@@ -1,6 +1,6 @@
 
 #rastrigin test function
-rastrigin <- function(vec)
+funRastrigin <- function(vec)
 {
     if(length(dim(vec))<=1){
         sum = 0
@@ -9,12 +9,12 @@ rastrigin <- function(vec)
         }
         return(matrix((10*length(vec) + sum), , 1))
     }
-    res = matrix(apply(vec,1,"rastrigin"), , 1)
+    res = matrix(apply(vec,1,"funRastrigin"), , 1)
     return(res)
 }
 
 #branin test function
-branin <- function(vec, a=1, b=5.1/(4*pi^2), c=5/pi, r=6, s=10, t=1/(8*pi))
+funBranin <- function(vec, a=1, b=5.1/(4*pi^2), c=5/pi, r=6, s=10, t=1/(8*pi))
 {
     if(length(dim(vec))<=1){
         x1 <- vec[1]
@@ -24,7 +24,7 @@ branin <- function(vec, a=1, b=5.1/(4*pi^2), c=5/pi, r=6, s=10, t=1/(8*pi))
         y <- term1 + term2 + s - 0.397887
         return(matrix(y, , 1))
     }else{
-        return(res = matrix(apply(vec,1,"branin"), , 1))
+        return(res = matrix(apply(vec,1,"funBranin"), , 1))
     }
 }
 ###############

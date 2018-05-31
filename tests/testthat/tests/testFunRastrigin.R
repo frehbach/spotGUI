@@ -1,0 +1,12 @@
+app <- ShinyDriver$new("../", seed = 1)
+app$snapshotInit("testFunRastrigin")
+
+app$setInputs(objectiveFunction = "funRastrigin")
+app$setInputs(addDimension = "click")
+app$setInputs(lowerBound3 = -5)
+app$setInputs(upperBound3 = 5)
+app$setInputs(tabs = "spotConfig")
+app$setInputs(tabs = "runMode")
+app$setInputs(runCreateDOE = "click")
+app$setInputs(evaluateData = "click")
+app$snapshot(list(output = "resultTable"))

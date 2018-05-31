@@ -458,4 +458,33 @@
             <upper>5</upper>
         </dimension>
     </objectiveFunction>
+    <objectiveFunction>
+        <name>funRastrigin</name>
+        <vectorized>true</vectorized>
+        <dimension>
+            <name>X1</name>
+            <type>numeric</type>
+            <lower>-5.12</lower>
+            <amount>3</amount>
+            <upper>5.12</upper>
+        </dimension>
+    </objectiveFunction>
+    <objectiveFunction>
+        <name>funBranin</name>
+        <vectorized>true</vectorized>
+        <dimension>
+            <name>X1</name>
+            <type>numeric</type>
+            <lower>-5</lower>
+            <amount>1</amount>
+            <upper>10</upper>
+        </dimension>
+        <dimension>
+            <name>X1</name>
+            <type>numeric</type>
+            <lower>-0</lower>
+            <amount>1</amount>
+            <upper>15</upper>
+        </dimension>
+    </objectiveFunction>
 </spotConfig>
