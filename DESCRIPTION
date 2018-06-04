@@ -20,9 +20,9 @@ License: GPL (>=2)
 Encoding: UTF-8
 LazyData: true
 Depends:
-    R (>= 3.1.0),
-    smoof
+    R (>= 3.1.0)
 Imports:
+    smoof,
     shinyBS,
     shiny,
     shinydashboard,

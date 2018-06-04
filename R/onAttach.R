@@ -5,7 +5,11 @@
 #'
 #' @keywords internal
 .onAttach <- function(libname, pkgname){
+    suppressMessages(attachNamespace("smoof"))
+
+    #Non Interactive sessions should not see a welcome message
     if (!interactive()) return()
+
     packageStartupMessage("*** Welcome to the spotGUI package ***\n\n
                           There is only one command that you will need to use the spotGUI:\n
                           runSpotGUI()\n\n

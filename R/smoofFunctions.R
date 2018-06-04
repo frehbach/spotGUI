@@ -1,5 +1,6 @@
 getAllSmoofFunctions <- function(){
     functionBlackList <- c("Shekel function","Hartmann")
+    requireNamespace("smoof")
     smoofNames <- smoof::filterFunctionsByTags(tags = "single-objective")
     smoofNames <- smoofNames[-which(smoofNames %in% functionBlackList)]
     return(smoofNames)

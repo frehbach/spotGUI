@@ -1,5 +1,3 @@
-spotGuiEnv <- new.env()
-
 #' Generate Server Part of SPOT-GUI
 #'
 #' Generates the server part of the SPOT-GUI.
@@ -31,7 +29,7 @@ getServer <- function(input, output, session) {
     tableChangedByScript <- reactiveVal()
     spotResult <- reactiveVal()
     rLogOutput <- reactiveVal()
-    assign("inputDimensions", NULL, envir=spotGuiEnv)
+    setEnvData("inputDimensions", NULL)
 
     maxInputDimension <- reactiveVal(0)
 
@@ -336,8 +334,6 @@ getServer <- function(input, output, session) {
             variables = 1:getNDim(input)
             variables = variables[-getNotSelectedVariables(input, "AUTO")]
             sliderInputs <- getPlotSliderValues(input,"AUTO")
-            #plotModel(model,
-             #         which = variables, constant = sliderInputs,type ="filled.contour")
             p <- plotModel(model,
                       which = variables, constant = sliderInputs,type ="persp3d")
             p$elementId <- NULL
@@ -436,36 +432,5 @@ getServer <- function(input, output, session) {
             maxInputDimension(maxInputDimension() +
                                   generateInputUI(input, initVariables,configInitiated)))
         div()
-    })
-
-    output$plotlyModelPlot <- renderPlotly({
-        req(spotResult()$y)
-
-        validate(
-            need(getNDim(input) >= 2, "Plots are currently only possible with >= 2 Dimensions")
-        )
-
-        # Require that at least one slider exists if input dimensions is larger 2
-        if(getNDim(input)> 2){
-            val <- getNotSelectedVariables(input,"AUTO")[1]
-            req(input[[paste("sliderAUTOx",val,sep="")]])
-        }
-
-        model <- spotResult()$modelFit
-        if(is.null(model)){
-            return()
-        }
-        if(getNDim(input) == 2){
-            plotlyModelPlot(model,input)
-        }else{
-            variables <- 1:getNDim(input)
-            notSelectedVars <- getNotSelectedVariables(input, "AUTO")
-            variables = variables[-notSelectedVars]
-            sliderInputs <- getPlotSliderValues(input,"AUTO")
-            constants <- rep(x = 0,times = getNDim(input))
-            constants[notSelectedVars] <- sliderInputs
-            plotlyModelPlot(model,input,
-                      which = variables, constant = sliderInputs)
-        }
     })
 }

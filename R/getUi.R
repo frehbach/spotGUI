@@ -35,7 +35,6 @@ getUIPage <- function(){
                                 uiOutput("objectiveFunctionSelector")
                             ),
                             h3("Dimensions: "),
-                            #uiOutput("objectiveFunctionAdditionalSpecifiers"),
                             uiOutput("objectiveFunctionInputParameters"),
                             actionButton(inputId = "addDimension",
                                          label = "",icon = icon("plus-circle"))
@@ -91,9 +90,6 @@ getUIPage <- function(){
                             column(6,
                                    uiOutput("slidersResult"),
                                    uiOutput("variableSelectors"),
-                                   #if (requireNamespace("plotly", quietly = TRUE)) {
-                                   #       plotlyOutput("plotlyModelPlot")
-                                   # },
                                    plotlyOutput("resultModelPlot")
                             )
                         )

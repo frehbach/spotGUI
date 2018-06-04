@@ -195,7 +195,7 @@ getObjectiveFunctionSelectorXML <- function(input){
 }
 
 generateInputUI <- function(input,initVariables,configInitiated){
-    assign("inputDimensions", NULL, envir=spotGuiEnv)
+    setEnvData("inputDimensions", NULL)
     if((input$objectiveFunction == "rEnv") |
        (input$objectiveFunction == "mInput")){
         return(0)
@@ -246,8 +246,8 @@ createDimensionElement <- function(input,listElement, index, initVariables, conf
     observerRemDim <- observeEvent(input[[paste0("removeDimension",as.character(index))]],{
         removeUI(selector = paste0("#inputPanel", index), immediate = T)
         isolate({
-            x <- get("inputDimensions",envir=spotGuiEnv)
-            assign("inputDimensions", x[x!=index], envir=spotGuiEnv)
+            x <- getEnvData("inputDimensions")
+            setEnvData("inputDimensions", x[x!=index])
             })
         initVariables(configInitiated())})
 
@@ -276,6 +276,6 @@ createDimensionElement <- function(input,listElement, index, initVariables, conf
         column(width = 3, colList[[3]]),
         column(width = 3, colList[[4]]),
         column(width = 1, colList[[5]])))
-    isolate(assign("inputDimensions", c(get("inputDimensions",envir=spotGuiEnv),index), envir=spotGuiEnv))
+    isolate(setEnvData("inputDimensions", c(getEnvData("inputDimensions"),index)))
     return(element)
 }

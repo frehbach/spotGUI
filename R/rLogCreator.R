@@ -1,7 +1,8 @@
-## R-Code Log Creator
-## Author FR
-
-LIST_ITEMS_PER_ROW = 1
+#' List Items per row in R-Code Exports
+#'
+#' Specify how many items of a list a printed per line
+#' @keywords internal
+LIST_ITEMS_PER_ROW <- 1
 
 rLogResetMessage <- function(){
     message <- paste(

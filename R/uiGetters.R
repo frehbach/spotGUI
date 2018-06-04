@@ -5,7 +5,7 @@ getBounds <- function(input){
     ubounds <- NULL
     types <- NULL
 
-    dims <- get("inputDimensions",envir=spotGuiEnv)
+    dims <- getEnvData("inputDimensions")
 
     for(e in dims){
         if(is.na(as.integer(input[[paste0("dimensionAmount",e)]]))){
