@@ -1,3 +1,5 @@
+context("Shiny GUI Interactive Tests")
+
 runGUITests <- function(testNames){
     require("shinytest")
     require("spotGUI")

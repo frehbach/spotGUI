@@ -1,6 +1,6 @@
 #' runTests
 #'
-#' Runs package tests including many GUI scenarios
+#' Runs package tests via devtools::test
 #' @keywords internal
 runTests <- function(){
     requireNamespace("testthat")

@@ -1,3 +1,4 @@
+context("XML Functions")
 
 compareHelpFilesWithXML <- function(){
     xmlConfig <- spotGUI:::xmlGetAllConfiguredControlElements()

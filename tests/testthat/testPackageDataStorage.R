@@ -1,3 +1,5 @@
+context("Package Data Storage")
+
 test_that("packageDataStorage", {
     strName <- "someTestVariable"
     setEnvData(strName,77)
