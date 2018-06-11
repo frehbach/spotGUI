@@ -325,6 +325,9 @@ getServer <- function(input, output, session) {
         if(is.null(model)){
             return()
         }
+        if(is.na(model)){
+            return()
+        }
         if(getNDim(input) == 2){
             #plotModel(model,type ="filled.contour")
             p <- plotModel(model,type ="persp3d")
