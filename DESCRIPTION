@@ -37,8 +37,6 @@ Imports:
     httpuv,
     methods
 Suggests:
-    roxygen2,
     testthat,
-    shinytest,
-    devtools
+    shinytest
 RoxygenNote: 6.0.1
