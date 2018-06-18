@@ -325,7 +325,7 @@ getServer <- function(input, output, session) {
         if(is.null(model)){
             return()
         }
-        if(is.na(model)){
+        if(is.na(model[1])){
             return()
         }
         if(getNDim(input) == 2){
