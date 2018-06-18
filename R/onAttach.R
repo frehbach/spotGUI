@@ -7,7 +7,9 @@
 .onAttach <- function(libname, pkgname){
     #Smoof depends on other packages so it has to be attached
     #in order to load its depends
-    suppressMessages(attachNamespace("smoof"))
+    if(0 == length(grep(paste("^package:", "smoof", "$", sep=""), search()))){
+        suppressMessages(attachNamespace("smoof"))
+    }
 
     #Non Interactive sessions should not see a welcome message
     if (!interactive()) return()
