@@ -1,13 +1,12 @@
 context("Shiny GUI Interactive Tests")
 
 runGUITests <- function(testNames){
-    require("shinytest")
     require("spotGUI")
     require("tools")
 
     for(testName in testNames){
         cat(paste("\nStarting a test:", testName))
-        testApp(".",testName)
+        shinytest::expect_pass(shinytest::testApp(".",testName))
     }
 }
 
