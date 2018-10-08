@@ -58,8 +58,10 @@ getServer <- function(input, output, session) {
                                   "Spot Config was not fully loaded, please revisit Spot Config tab"))
             return()
         }
-        if(!checkInputCorrectness(input)){
-            return()
+        if(!input$objectiveFunction == "mInput"){
+            if(!checkInputCorrectness(input)){
+                return()
+            }
         }
         if(getNDim(input) == 0){
             showModal(modalDialog(title="Configuration Error","You have to specify at least one
@@ -96,8 +98,10 @@ getServer <- function(input, output, session) {
     observeEvent(input$evaluateData,{
         req(spotResult())
 
-        if(!checkInputCorrectness(input)){
-            return()
+        if(!input$objectiveFunction == "mInput"){
+            if(!checkInputCorrectness(input)){
+                return()
+            }
         }
 
         localResult <- spotResult()
@@ -111,6 +115,7 @@ getServer <- function(input, output, session) {
                                       ,footer=NULL,easyClose=T))
                 return()
             }
+            localResult$modelFit <- buildModel(input,localResult)
         }else{
             if(!input$rLogMode){
                 tryCatch(expr = {
@@ -235,8 +240,10 @@ getServer <- function(input, output, session) {
     observeEvent(input$proposeNewPoint,{
         req(spotResult())
 
-        if(!checkInputCorrectness(input)){
-            return()
+        if(!input$objectiveFunction == "mInput"){
+            if(!checkInputCorrectness(input)){
+                return()
+            }
         }
 
         if(any(is.na(spotResult()$y)) | nrow(spotResult()$x) > length(spotResult()$y)){
