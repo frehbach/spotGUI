@@ -1,7 +1,7 @@
 Package: spotGUI
 Type: Package
 Title: Graphical User Interface for the Package 'SPOT'
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(
         person("Frederik","Rehbach", role = c("aut", "cre"), email = "frederik.rehbach@th-koeln.de"),
         person("Martin", "Zaefferer", role = "aut"),
