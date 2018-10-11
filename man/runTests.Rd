@@ -7,6 +7,6 @@
 runTests()
 }
 \description{
-Runs package tests including many GUI scenarios
+Runs package tests via devtools::test
 }
 \keyword{internal}

@@ -1,8 +1,14 @@
-## R-Code Log Creator
-## Author FR
+#' List Items per row in R-Code Exports
+#'
+#' Specify how many items of a list a printed per line
+#' @keywords internal
+LIST_ITEMS_PER_ROW <- 1
 
-LIST_ITEMS_PER_ROW = 1
-
+#' Generate the Initial Code Block for the R-Export
+#'
+#' @return String, rExport initial code
+#'
+#' @keywords internal
 rLogResetMessage <- function(){
     message <- paste(
         " ",
@@ -19,8 +25,15 @@ rLogResetMessage <- function(){
     )
 }
 
-#Generates Text for textfield in "Run Spot" window. Shows the till then best found
-#candidate solution
+
+#' Textoutput Field 'Best Solution'
+#'
+#' Generates the outputField to show the best till then found candidate solution
+#'
+#' @param input shiny input
+#' @param data data.frame with all candidate solutions
+#'
+#' @return ouputField
 getTextoutputBestSolution <- function(input, data){
     #get data index with best objective function value
     ind <- which.min(data[,ncol(data)])

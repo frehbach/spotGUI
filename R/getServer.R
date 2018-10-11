@@ -1,5 +1,3 @@
-spotGuiEnv <- new.env()
-
 #' Generate Server Part of SPOT-GUI
 #'
 #' Generates the server part of the SPOT-GUI.
@@ -31,7 +29,7 @@ getServer <- function(input, output, session) {
     tableChangedByScript <- reactiveVal()
     spotResult <- reactiveVal()
     rLogOutput <- reactiveVal()
-    assign("inputDimensions", NULL, envir=spotGuiEnv)
+    setEnvData("inputDimensions", NULL)
 
     maxInputDimension <- reactiveVal(0)
 
@@ -60,8 +58,10 @@ getServer <- function(input, output, session) {
                                   "Spot Config was not fully loaded, please revisit Spot Config tab"))
             return()
         }
-        if(!checkInputCorrectness(input)){
-            return()
+        if(!input$objectiveFunction == "mInput"){
+            if(!checkInputCorrectness(input)){
+                return()
+            }
         }
         if(getNDim(input) == 0){
             showModal(modalDialog(title="Configuration Error","You have to specify at least one
@@ -98,8 +98,10 @@ getServer <- function(input, output, session) {
     observeEvent(input$evaluateData,{
         req(spotResult())
 
-        if(!checkInputCorrectness(input)){
-            return()
+        if(!input$objectiveFunction == "mInput"){
+            if(!checkInputCorrectness(input)){
+                return()
+            }
         }
 
         localResult <- spotResult()
@@ -113,6 +115,7 @@ getServer <- function(input, output, session) {
                                       ,footer=NULL,easyClose=T))
                 return()
             }
+            localResult$modelFit <- buildModel(input,localResult)
         }else{
             if(!input$rLogMode){
                 tryCatch(expr = {
@@ -229,6 +232,20 @@ getServer <- function(input, output, session) {
         tableChangedByScript(F)
     })
 
+    observeEvent(input$resultTableIE,{
+        if(!tableChangedByScript()){
+            newData <- as.matrix(hot_to_r(input$resultTableIE))
+
+            newResult <- spotResult()
+            newResult$x <- newData[,1:getNDim(input)]
+            newResult$y <- newData[,ncol(newData)]
+
+            spotResult(newResult)
+        }
+
+        tableChangedByScript(F)
+    })
+
     ## Objective Function Settings changes lead to calculation reset
     observeEvent(listObjectiveFunctionElements(),{
         initVariables(configInitiated())
@@ -237,8 +254,10 @@ getServer <- function(input, output, session) {
     observeEvent(input$proposeNewPoint,{
         req(spotResult())
 
-        if(!checkInputCorrectness(input)){
-            return()
+        if(!input$objectiveFunction == "mInput"){
+            if(!checkInputCorrectness(input)){
+                return()
+            }
         }
 
         if(any(is.na(spotResult()$y)) | nrow(spotResult()$x) > length(spotResult()$y)){
@@ -327,6 +346,9 @@ getServer <- function(input, output, session) {
         if(is.null(model)){
             return()
         }
+        if(is.na(model[1])){
+            return()
+        }
         if(getNDim(input) == 2){
             #plotModel(model,type ="filled.contour")
             p <- plotModel(model,type ="persp3d")
@@ -336,14 +358,37 @@ getServer <- function(input, output, session) {
             variables = 1:getNDim(input)
             variables = variables[-getNotSelectedVariables(input, "AUTO")]
             sliderInputs <- getPlotSliderValues(input,"AUTO")
-            #plotModel(model,
-             #         which = variables, constant = sliderInputs,type ="filled.contour")
             p <- plotModel(model,
                       which = variables, constant = sliderInputs,type ="persp3d")
             p$elementId <- NULL
             p
         }
     })
+
+    round_df <- function(df, digits) {
+        nums <- as.vector(is.na(df))
+        if(length(nums) == 0){
+            return(df)
+        }
+        for(i in 1:length(nums)){
+            if(!nums[i]){
+                row <- i%%nrow(df)
+                if(row == 0){
+                    row <- nrow(df)
+                }
+                col <- as.integer(i/nrow(df))+1
+                if(row == nrow(df)){
+                    col <- col -1
+                }
+                df[row,col] <- round(df[row,col], digits = digits)
+            }
+        }
+
+        for(i in 1:ncol(df)){
+            df[,i] <- as.numeric(df[,i])
+        }
+        df
+    }
 
     output$resultTable <- renderRHandsontable({
         req(spotResult())
@@ -368,8 +413,35 @@ getServer <- function(input, output, session) {
         colNames <- c(colNames, "results")
         df <- data.frame(data)
         names(df) <- colNames
+        df <- round_df(df,3)
+        rhandsontable(df, stretchH = "all")
+    })
 
-        rhandsontable(round(df,3), stretchH = "all")
+    output$resultTableIE <- renderRHandsontable({
+        req(spotResult())
+        tableChangedByScript(T)
+        x <- spotResult()$x
+        y <- spotResult()$y
+
+        if(length(dim(x)) > 1){
+            len <- nrow(x)
+        }else{
+            len <- length(x)
+        }
+        if(len == length(y)){
+            data <- cbind(x,y)
+        }else{
+            data <- cbind(x,c(y,rep(NA,nrow(x)-length(y))))
+        }
+        colNames <- NULL
+        for(i in 1:(ncol(data)-1)){
+            colNames <- c(colNames, paste("x",i,sep=""))
+        }
+        colNames <- c(colNames, "results")
+        df <- data.frame(data)
+        names(df) <- colNames
+        df <- round_df(df,3)
+        rhandsontable(df, stretchH = "all")
     })
 
     output$bestFound <- renderUI({
@@ -415,6 +487,101 @@ getServer <- function(input, output, session) {
         getUiSelectorXML("design",input)
     })
 
+    spotResultToDF <- function(){
+        localResult <- spotResult()
+        if(is.null(localResult)){
+            return()
+        }
+        x <- localResult$x
+        y <- localResult$y
+
+        if(length(dim(x)) > 1){
+            len <- nrow(x)
+        }else{
+            len <- length(x)
+        }
+        if(len == length(y)){
+            data <- cbind(x,y)
+        }else{
+            data <- cbind(x,c(y,rep(NA,nrow(x)-length(y))))
+        }
+        colNames <- NULL
+        for(i in 1:(ncol(data)-1)){
+            colNames <- c(colNames, paste("x",i,sep=""))
+        }
+        colNames <- c(colNames, "results")
+        df <- data.frame(data)
+        names(df) <- colNames
+        df
+    }
+
+    observeEvent(c(input$removeEmptyTableRows,input$removeEmptyTableRowsIE),{
+        localResult <- spotResult()
+        df <- spotResultToDF()
+
+        if(is.null(df)){
+            return()
+        }
+
+        ind <- NULL
+        for(i in 1:nrow(df)){
+            row <- df[i,]
+            if(all(is.na(row))){
+                ind <- c(ind, i)
+            }
+        }
+        if(!is.null(ind)){
+            df <- df[-ind,]
+        }
+
+        localResult$x <- df[,-ncol(df)]
+        localResult$y <- df[,ncol(df)]
+
+        if(length(localResult$y) == 0){
+            spotResult(NULL)
+        }
+
+        spotResult(localResult)
+    })
+
+    observeEvent(input$exportData,{
+        localResult <- spotResult()
+        if(is.null(localResult)){
+            showModal(modalDialog(title="Export Error",
+                                  "There was no data to export"))
+            return()
+        }
+        volumes <- c("UserFolder"="~/")
+        shinyFiles::shinyFileSave(input, "exportData", roots=volumes, session=session)
+        fileinfo <- shinyFiles::parseSavePath(volumes, input$exportData)
+        df <- spotResultToDF()
+        if (nrow(fileinfo) > 0) {
+            utils::write.csv(df, as.character(fileinfo$datapath), row.names = F)
+        }
+    })
+
+    observeEvent(input$importData,{
+        req(input$importData)
+        data <- utils::read.csv(input$importData$datapath)
+        localResult <- spotResult()
+        localResult$x <- unname(as.matrix(data[,-ncol(data)]))
+        localResult$y <- data[,ncol(data)]
+        spotResult(localResult)
+        shinyjs::enable("resetData")
+        shinyjs::enable("evaluateData")
+    })
+
+    observeEvent(c(input$addTableRow,input$addTableRowIE),{
+        localResult <- spotResult()
+        if(is.null(localResult$x)){
+            localResult$x <- matrix(rep(NA,getNDim(input)), ncol = getNDim(input))
+        }else{
+            localResult$x <- rbind(localResult$x, rep(NA,getNDim(input)))
+            localResult$y <- c(localResult$y,NA)
+        }
+        spotResult(localResult)
+    })
+
     output$designUI <- renderUI({
         req(input$designSelector)
         getUiXML("design",input)
@@ -436,36 +603,5 @@ getServer <- function(input, output, session) {
             maxInputDimension(maxInputDimension() +
                                   generateInputUI(input, initVariables,configInitiated)))
         div()
-    })
-
-    output$plotlyModelPlot <- renderPlotly({
-        req(spotResult()$y)
-
-        validate(
-            need(getNDim(input) >= 2, "Plots are currently only possible with >= 2 Dimensions")
-        )
-
-        # Require that at least one slider exists if input dimensions is larger 2
-        if(getNDim(input)> 2){
-            val <- getNotSelectedVariables(input,"AUTO")[1]
-            req(input[[paste("sliderAUTOx",val,sep="")]])
-        }
-
-        model <- spotResult()$modelFit
-        if(is.null(model)){
-            return()
-        }
-        if(getNDim(input) == 2){
-            plotlyModelPlot(model,input)
-        }else{
-            variables <- 1:getNDim(input)
-            notSelectedVars <- getNotSelectedVariables(input, "AUTO")
-            variables = variables[-notSelectedVars]
-            sliderInputs <- getPlotSliderValues(input,"AUTO")
-            constants <- rep(x = 0,times = getNDim(input))
-            constants[notSelectedVars] <- sliderInputs
-            plotlyModelPlot(model,input,
-                      which = variables, constant = sliderInputs)
-        }
     })
 }

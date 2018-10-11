@@ -1,0 +1,12 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^.*\.yml$
+^.*\.yaml$
+^.*\.ini$
+^.*\.txt$
+^appveyor\.yml$
+README.md
+Icon
+Icon?
+Docs
+Doc/

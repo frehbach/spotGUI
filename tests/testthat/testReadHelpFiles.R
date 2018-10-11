@@ -1,3 +1,4 @@
+context("Reading Help Files")
 
 test_that("Non existing package/method Returns NULL", {
     expect_equal(spotGUI:::getMethodHelp("SPOT","someNonExistingFunction"),NULL);

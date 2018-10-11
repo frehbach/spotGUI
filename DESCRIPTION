@@ -1,7 +1,7 @@
 Package: spotGUI
 Type: Package
 Title: Graphical User Interface for the Package 'SPOT'
-Version: 0.2.0
+Version: 0.2.2
 Authors@R: c(
         person("Frederik","Rehbach", role = c("aut", "cre"), email = "frederik.rehbach@th-koeln.de"),
         person("Martin", "Zaefferer", role = "aut"),
@@ -21,9 +21,9 @@ Encoding: UTF-8
 LazyData: true
 Depends:
     R (>= 3.1.0),
-    smoof
+    shinyBS
 Imports:
-    shinyBS,
+    smoof,
     shiny,
     shinydashboard,
     SPOT (>= 2.0.3),
@@ -35,9 +35,9 @@ Imports:
     plotly,
     tools,
     httpuv,
-    methods
+    methods,
+    shinyFiles
 Suggests:
-    roxygen2,
     testthat,
     shinytest,
     devtools

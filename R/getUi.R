@@ -14,12 +14,16 @@ getUIPage <- function(){
         # Creation of Main Tabs
         dashboardSidebar(
             sidebarMenu(id = "tabs",
-                        menuItem("Objective function", tabName = "objectiveFunction"),
-                        menuItem("Spot Config", tabName = "spotConfig"),
-                        menuItem("Run Spot", tabName = "runMode"),
-                        menuItem("Exports", tabName = "exports")
+                        menuItem("Objective Function", tabName = "objectiveFunction"),
+                        menuItem("SPOT Configuration", tabName = "spotConfig"),
+                        menuItem("SPOT Evaluation", tabName = "runMode",
+                                 menuSubItem("Optimization & Modelling", tabName = "runMode"),
+                                 menuSubItem("Data Import/Export", tabName = "importExport"),
+                                 startExpanded = T),
+                        menuItem("R-Log", tabName = "exports")
             )
         ),
+
 
         # Body Contents of each tab
         dashboardBody(
@@ -35,7 +39,6 @@ getUIPage <- function(){
                                 uiOutput("objectiveFunctionSelector")
                             ),
                             h3("Dimensions: "),
-                            #uiOutput("objectiveFunctionAdditionalSpecifiers"),
                             uiOutput("objectiveFunctionInputParameters"),
                             actionButton(inputId = "addDimension",
                                          label = "",icon = icon("plus-circle"))
@@ -86,16 +89,31 @@ getUIPage <- function(){
                         fluidRow(
                             uiOutput("bestFound"),
                             column(6,
+                                   actionButton("addTableRow", "+"),
+                                   actionButton("removeEmptyTableRows", "Remove Empty Rows"),
                                    rHandsontableOutput('resultTable')
                             ),
                             column(6,
                                    uiOutput("slidersResult"),
                                    uiOutput("variableSelectors"),
-                                   #if (requireNamespace("plotly", quietly = TRUE)) {
-                                   #       plotlyOutput("plotlyModelPlot")
-                                   # },
                                    plotlyOutput("resultModelPlot")
                             )
+                        )
+                ),
+
+                tabItem(tabName = "importExport",
+                        fluidRow(
+                            wellPanel(
+                                fileInput("importData", "Import Data", multiple = F),
+                                h5(strong("Export Data")),
+                                shinyFiles::shinySaveButton("exportData", "Browse...", "Save file as ...",
+                                                            filetype=list(csv="csv"))
+                            )
+                        ),
+                        actionButton("addTableRowIE", "+"),
+                        actionButton("removeEmptyTableRowsIE", "Remove Empty Rows"),
+                        fluidRow(
+                            rHandsontableOutput('resultTableIE')
                         )
                 ),
 

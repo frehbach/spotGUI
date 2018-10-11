@@ -26,6 +26,7 @@
 #' @importFrom utils capture.output
 #' @importFrom utils installed.packages
 #' @importFrom methods getPackageName
+#' @import shinyFiles
 #'
 #' @export
 runSpotGUI <- function() {
