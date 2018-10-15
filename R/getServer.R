@@ -544,21 +544,36 @@ getServer <- function(input, output, session) {
         spotResult(localResult)
     })
 
-    observeEvent(input$exportData,{
-        localResult <- spotResult()
-        if(is.null(localResult)){
-            showModal(modalDialog(title="Export Error",
-                                  "There was no data to export"))
-            return()
-        }
-        volumes <- c("UserFolder"="~/")
-        shinyFiles::shinyFileSave(input, "exportData", roots=volumes, session=session)
-        fileinfo <- shinyFiles::parseSavePath(volumes, input$exportData)
-        df <- spotResultToDF()
-        if (nrow(fileinfo) > 0) {
-            utils::write.csv(df, as.character(fileinfo$datapath), row.names = F)
-        }
-    })
+    #observeEvent(input$exportData,{
+    #    localResult <- spotResult()
+    #    if(is.null(localResult)){
+    #        showModal(modalDialog(title="Export Error",
+    #                              "There was no data to export"))
+    #        return()
+    #    }
+    #    volumes <- c("UserFolder"="~/")
+    #    shinyFiles::shinyFileSave(input, "exportData", roots=volumes, session=session)
+    #    fileinfo <- shinyFiles::parseSavePath(volumes, input$exportData)
+    #    df <- spotResultToDF()
+    #    if (nrow(fileinfo) > 0) {
+    #        utils::write.csv(df, as.character(fileinfo$datapath), row.names = F)
+    #    }
+    #})
+
+    output$downloadData <- downloadHandler(
+        filename = function() {
+            paste('data-', Sys.Date(), '.csv', sep='')
+        },
+        content = function(con) {
+            localResult <- spotResult()
+            if(is.null(localResult)){
+                showModal(modalDialog(title="Export Error",
+                                      "There was no data to export"))
+                return()
+            }
+            df <- spotResultToDF()
+            utils::write.csv(df, con, row.names = F)
+        })
 
     observeEvent(input$importData,{
         req(input$importData)

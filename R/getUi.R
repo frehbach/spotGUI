@@ -106,8 +106,9 @@ getUIPage <- function(){
                             wellPanel(
                                 fileInput("importData", "Import Data", multiple = F),
                                 h5(strong("Export Data")),
-                                shinyFiles::shinySaveButton("exportData", "Browse...", "Save file as ...",
-                                                            filetype=list(csv="csv"))
+                                downloadLink('downloadData', 'Download')
+                                #shinyFiles::shinySaveButton("exportData", "Browse...", "Save file as ...",
+                                #                            filetype=list(csv="csv"))
                             )
                         ),
                         actionButton("addTableRowIE", "+"),
