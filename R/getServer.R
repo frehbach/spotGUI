@@ -17,7 +17,7 @@ getServer <- function(input, output, session) {
 
         if(init){
             shinyjs::disable("resetData")
-            shinyjs::disable("evaluateData")
+            #shinyjs::disable("evaluateData")
             shinyjs::disable("proposeNewPoint")
             shinyjs::enable("runCreateDOE")
             shinyjs::enable("runSpotIter")
@@ -43,7 +43,7 @@ getServer <- function(input, output, session) {
     ))
 
     ## En-/Disables
-    shinyjs::disable("evaluateData")
+    #shinyjs::disable("evaluateData")
     shinyjs::disable("resetData")
     shinyjs::disable("proposeNewPoint")
 
