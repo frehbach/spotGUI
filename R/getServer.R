@@ -106,6 +106,9 @@ getServer <- function(input, output, session) {
 
         localResult <- spotResult()
         x <- localResult$x
+        #browser()
+        colnames(localResult$x) <- paste0("X",1:ncol(x))
+
         y <- localResult$y
 
         if(input$objectiveFunction == "mInput"){
@@ -115,7 +118,19 @@ getServer <- function(input, output, session) {
                                       ,footer=NULL,easyClose=T))
                 return()
             }
-            localResult$modelFit <- buildModel(input,localResult)
+
+            tryCatch(expr = {
+                localResult$modelFit <- buildModel(input,localResult)}
+                , error = function(cond) {
+                    showModal(modalDialog(title="Configuration Error",
+                                          HTML(paste("There seems to be an error in your configuration.<br>
+                                                     There might be an issue in the configuration of your objective function<br>
+                                                     or there exists a wrong entry in the data table.<br>
+                                                     Please check for typos/misconfigurations
+                                                     <br><br>Original error message was:<br>",cond))
+                                          ,footer=NULL,easyClose=T))
+                    return()
+                })
         }else{
             if(!input$rLogMode){
                 tryCatch(expr = {
