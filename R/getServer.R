@@ -193,19 +193,25 @@ getServer <- function(input, output, session) {
             tryCatch(expr = {
                 ctrl <- getSpotControl(input)
                 funEvals <- ctrl$funEvals
+                stepsTodo <- funEvals - max(ctrl$designControl$size,length(localSpotResult$y)) + 1
+                print(max(ctrl$designControl$size,length(localSpotResult$y)))
                 bounds <- getBounds(input)
-                while(T){
-                    if(isTRUE(session$input$spotInterrupted)){
-                        break
-                    }
-                    if(!is.null(localSpotResult)){
-                        if(nrow(localSpotResult$x) >= funEvals){
+                withProgress(message = 'Calculation in progress', {
+                    while(T){
+                        if(isTRUE(session$input$spotInterrupted)){
                             break
                         }
+                        if(!is.null(localSpotResult)){
+                            if(nrow(localSpotResult$x) >= funEvals){
+                                break
+                            }
+                        }
+                        localSpotResult <- doSpotIter(input,localSpotResult,ctrl,bounds)
+                        httpuv::service()
+                        incProgress(1/stepsTodo)
                     }
-                    localSpotResult <- doSpotIter(input,localSpotResult,ctrl,bounds)
-                    httpuv::service()
-                }
+                    })
+
             }, error = function(cond) {
                 showModal(modalDialog(title="Configuration Error",HTML(paste("There seems to be an error in your configuration.<br>
                                                                              SPOT was not able to run.<br>

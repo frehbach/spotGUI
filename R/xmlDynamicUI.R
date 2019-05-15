@@ -264,6 +264,9 @@ createDimensionElement <- function(input,listElement, index, initVariables, conf
                                  label = "upper bound", value = listElement$upper),
                     numericInput(paste0("dimensionAmount",as.character(index)),
                                  label = "amnt Dimensions", value = listElement$amount),
+                    textInput(inputId = paste0("varName",as.character(index)),
+                              label = "variable name",
+                              value = paste0("X",as.character(index))),
                     actionButton(inputId = paste0("removeDimension",as.character(index)),
                                  label = "",icon = icon("minus-circle"), style = "margin-top: 25px"),
                     observerRemDim,
@@ -272,10 +275,11 @@ createDimensionElement <- function(input,listElement, index, initVariables, conf
 
     element <- wellPanel(id = paste0("inputPanel",index), fluidRow(
         column(width = 2, colList[[1]]),
-        column(width = 3, colList[[2]]),
-        column(width = 3, colList[[3]]),
+        column(width = 2, colList[[2]]),
+        column(width = 2, colList[[3]]),
         column(width = 3, colList[[4]]),
-        column(width = 1, colList[[5]])))
+        column(width = 2, colList[[5]]),
+        column(width = 1, colList[[6]])))
     isolate(setEnvData("inputDimensions", c(getEnvData("inputDimensions"),index)))
     return(element)
 }

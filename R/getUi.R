@@ -4,6 +4,8 @@
 #' This method is used internally in the starting process of the GUI.
 #' Manual use of this function is not advised.
 #'
+#' @import shinydashboard
+#'
 #' @export
 getUIPage <- function(){
     dashboardPage(
@@ -16,10 +18,8 @@ getUIPage <- function(){
             sidebarMenu(id = "tabs",
                         menuItem("Objective Function", tabName = "objectiveFunction"),
                         menuItem("SPOT Configuration", tabName = "spotConfig"),
-                        menuItem("SPOT Evaluation", tabName = "runMode",
-                                 menuSubItem("Optimization & Modelling", tabName = "runMode"),
-                                 menuSubItem("Data Import/Export", tabName = "importExport"),
-                                 startExpanded = T),
+                        menuItem("SPOT Evaluation", tabName = "runMode"),
+                        menuItem("Data Import/Export", tabName = "importExport"),
                         menuItem("R-Log", tabName = "exports")
             )
         ),
@@ -86,6 +86,10 @@ getUIPage <- function(){
                                 checkboxInput("rLogMode",label = "Log Only")
                             )
                         ),
+                        textOutput('textProcessing'),
+                        tags$head(tags$style("#textProcessing{color: red;
+                                             font-size: 20px;
+                                             font-style: italic;}")),
                         fluidRow(
                             uiOutput("bestFound"),
                             column(6,
