@@ -12,7 +12,7 @@ The package can be installed directly from github:
 
 ```R
 require(devtools)
-install_github("frehbach/EventDetectR")
+install_github("frehbach/spotGUI")
 ```
 
 The package is also available on CRAN.
