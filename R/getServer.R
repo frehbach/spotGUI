@@ -194,7 +194,6 @@ getServer <- function(input, output, session) {
                 ctrl <- getSpotControl(input)
                 funEvals <- ctrl$funEvals
                 stepsTodo <- funEvals - max(ctrl$designControl$size,length(localSpotResult$y)) + 1
-                print(max(ctrl$designControl$size,length(localSpotResult$y)))
                 bounds <- getBounds(input)
                 withProgress(message = 'Calculation in progress', {
                     while(T){
@@ -207,7 +206,6 @@ getServer <- function(input, output, session) {
                             }
                         }
                         localSpotResult <- doSpotIter(input,localSpotResult,ctrl,bounds)
-                        httpuv::service()
                         incProgress(1/stepsTodo)
                     }
                     })

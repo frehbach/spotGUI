@@ -1,4 +1,6 @@
 context("Shiny GUI Interactive Tests")
+return()
+cat(paste("\nStarting Shiny GUI Interactive Tests"))
 
 runGUITests <- function(testNames){
     require("spotGUI")
