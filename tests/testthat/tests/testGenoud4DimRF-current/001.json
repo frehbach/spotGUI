@@ -148,77 +148,70 @@
             "x2": 3.371,
             "x3": 0,
             "x4": 1,
-            "results": 13.258
+            "results": null
           },
           {
             "x1": -1.068,
             "x2": 2.116,
             "x3": 1,
             "x4": 0,
-            "results": 6.618
+            "results": null
           },
           {
             "x1": -0.399,
             "x2": -0.919,
             "x3": 1,
             "x4": 0,
-            "results": 2.004
+            "results": null
           },
           {
             "x1": 2.255,
             "x2": -4.186,
             "x3": 0,
             "x4": 0,
-            "results": 22.609
+            "results": null
           },
           {
             "x1": 1.061,
             "x2": -1.981,
             "x3": 1,
             "x4": 1,
-            "results": 7.051
+            "results": null
           },
           {
             "x1": -3.53,
             "x2": 4.808,
             "x3": 0,
             "x4": 0,
-            "results": 35.578
+            "results": null
           },
           {
             "x1": 4.495,
             "x2": 1.672,
             "x3": 0,
             "x4": 1,
-            "results": 23.997
+            "results": null
           },
           {
             "x1": -2.658,
             "x2": 0.166,
             "x3": 1,
             "x4": 1,
-            "results": 9.094
+            "results": null
           },
           {
             "x1": 3.481,
             "x2": -3.386,
             "x3": 0,
             "x4": 1,
-            "results": 24.581
+            "results": null
           },
           {
             "x1": -4.237,
             "x2": -2.642,
             "x3": 1,
             "x4": 0,
-            "results": 25.937
-          },
-          {
-            "x1": -0.372,
-            "x2": 0.632,
-            "x3": 0.644,
-            "x4": 0.01,
-            "results": 0.953
+            "results": null
           }
         ],
         "rClass": "data.frame",
@@ -245,7 +238,7 @@
         ],
         "rRowHeaders": null,
         "rDataDim": [
-          31,
+          30,
           5
         ],
         "selectCallback": false,
@@ -286,8 +279,7 @@
           "27",
           "28",
           "29",
-          "30",
-          "31"
+          "30"
         ],
         "columns": [
           {

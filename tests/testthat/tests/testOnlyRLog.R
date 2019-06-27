@@ -2,7 +2,7 @@ app <- ShinyDriver$new("../", seed = 1)
 app$snapshotInit("testOnlyRLog")
 
 app$setInputs(tabs = "spotConfig")
-app$setInputs(tabs = "runMode")
+try(app$setInputs(tabs = "runMode"), silent = T)
 app$setInputs(runSpotIter = "click")
 app$setInputs(rLogMode = TRUE)
 app$setInputs(runCreateDOE = "click")

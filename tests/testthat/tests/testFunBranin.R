@@ -3,7 +3,7 @@ app$snapshotInit("testFunBranin")
 
 app$setInputs(objectiveFunction = "funBranin")
 app$setInputs(tabs = "spotConfig")
-app$setInputs(tabs = "runMode")
+try(app$setInputs(tabs = "runMode"), silent = T)
 app$setInputs(runCreateDOE = "click")
 app$setInputs(evaluateData = "click")
 app$snapshot(list(output = "resultTable"))

@@ -1,0 +1,230 @@
+{
+  "output": {
+    "resultTable": {
+      "x": {
+        "data": [
+          {
+            "x1": -3.511,
+            "x2": 5.632,
+            "results": 85.175
+          },
+          {
+            "x1": -2.291,
+            "x2": -4.273,
+            "results": -10.94
+          },
+          {
+            "x1": -0.393,
+            "x2": 0.62,
+            "results": 6.144
+          },
+          {
+            "x1": 1.739,
+            "x2": -6.049,
+            "results": 62.62
+          },
+          {
+            "x1": -4.059,
+            "x2": 4.81,
+            "results": 80.551
+          },
+          {
+            "x1": 3.139,
+            "x2": 3.353,
+            "results": -2.452
+          },
+          {
+            "x1": 4.672,
+            "x2": 2.255,
+            "results": -42.866
+          },
+          {
+            "x1": 1.246,
+            "x2": -1.121,
+            "results": 7.345
+          },
+          {
+            "x1": 5.504,
+            "x2": -2.86,
+            "results": 19.687
+          },
+          {
+            "x1": -5.306,
+            "x2": -1.996,
+            "results": 16.631
+          },
+          {
+            "x1": 4.809,
+            "x2": 1.739,
+            "results": -3.42
+          },
+          {
+            "x1": 5.142,
+            "x2": 1.944,
+            "results": -9.601
+          },
+          {
+            "x1": 3.578,
+            "x2": 2.999,
+            "results": -29.319
+          },
+          {
+            "x1": 4.103,
+            "x2": 2.677,
+            "results": -52.144
+          },
+          {
+            "x1": 4.928,
+            "x2": 3.508,
+            "results": -85.596
+          },
+          {
+            "x1": 4.847,
+            "x2": 4.793,
+            "results": 1.951
+          },
+          {
+            "x1": 5.263,
+            "x2": 4.066,
+            "results": -28.313
+          },
+          {
+            "x1": 5.114,
+            "x2": 3.644,
+            "results": -64.003
+          },
+          {
+            "x1": 4.716,
+            "x2": 2.365,
+            "results": -52.282
+          },
+          {
+            "x1": 4.638,
+            "x2": 3.62,
+            "results": -82.118
+          }
+        ],
+        "rClass": "data.frame",
+        "rColClasses": {
+          "x1": "numeric",
+          "x2": "numeric",
+          "results": "numeric"
+        },
+        "rColnames": [
+          "x1",
+          "x2",
+          "results"
+        ],
+        "rColHeaders": [
+          "x1",
+          "x2",
+          "results"
+        ],
+        "rRowHeaders": null,
+        "rDataDim": [
+          20,
+          3
+        ],
+        "selectCallback": false,
+        "colHeaders": [
+          "x1",
+          "x2",
+          "results"
+        ],
+        "rowHeaders": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20"
+        ],
+        "columns": [
+          {
+            "type": "numeric",
+            "numericFormat": {
+              "pattern": "0.00"
+            },
+            "renderer": "customRenderer",
+            "default": null
+          },
+          {
+            "type": "numeric",
+            "numericFormat": {
+              "pattern": "0.00"
+            },
+            "renderer": "customRenderer",
+            "default": null
+          },
+          {
+            "type": "numeric",
+            "numericFormat": {
+              "pattern": "0.00"
+            },
+            "renderer": "customRenderer",
+            "default": null
+          }
+        ],
+        "width": null,
+        "height": null,
+        "debug": 0,
+        "search": false,
+        "stretchH": "all",
+        "comments": false,
+        "contextMenu": {
+          "items": {
+            "row_above": [
+
+            ],
+            "row_below": [
+
+            ],
+            "remove_row": [
+
+            ],
+            "hsep3": {
+              "name": "---------"
+            },
+            "undo": [
+
+            ],
+            "redo": [
+
+            ],
+            "hsep4": {
+              "name": "---------"
+            },
+            "alignment": [
+
+            ]
+          }
+        }
+      },
+      "evals": [
+        "columns.0.renderer",
+        "columns.1.renderer",
+        "columns.2.renderer"
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+
+      ]
+    }
+  }
+}

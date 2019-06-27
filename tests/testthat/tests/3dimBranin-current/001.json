@@ -1,0 +1,270 @@
+{
+  "output": {
+    "resultTable": {
+      "x": {
+        "data": [
+          {
+            "x1": -3,
+            "x2": 5,
+            "x3": 2.087,
+            "results": 48.222
+          },
+          {
+            "x1": -2,
+            "x2": -4,
+            "x3": 0.517,
+            "results": 193.292
+          },
+          {
+            "x1": 0,
+            "x2": 1,
+            "x3": 0.863,
+            "results": 44.204
+          },
+          {
+            "x1": 2,
+            "x2": -5,
+            "x3": -1.053,
+            "results": 75.056
+          },
+          {
+            "x1": -4,
+            "x2": 4,
+            "x3": 1.242,
+            "results": 112.176
+          },
+          {
+            "x1": 3,
+            "x2": 3,
+            "x3": 2.46,
+            "results": 0.471
+          },
+          {
+            "x1": 4,
+            "x2": 2,
+            "x3": -2.81,
+            "results": 3.415
+          },
+          {
+            "x1": 1,
+            "x2": -1,
+            "x3": -2.089,
+            "results": 45.456
+          },
+          {
+            "x1": 5,
+            "x2": -3,
+            "x3": -1.403,
+            "results": 30.575
+          },
+          {
+            "x1": -5,
+            "x2": -2,
+            "x3": -0.356,
+            "results": 380.481
+          },
+          {
+            "x1": 2,
+            "x2": 5,
+            "x3": 0.829,
+            "results": 8.383
+          },
+          {
+            "x1": 2,
+            "x2": 3,
+            "x3": 2.598,
+            "results": 5.718
+          },
+          {
+            "x1": 3,
+            "x2": 3,
+            "x3": 2.608,
+            "results": 0.471
+          },
+          {
+            "x1": 3,
+            "x2": 3,
+            "x3": -1.686,
+            "results": 0.471
+          },
+          {
+            "x1": 3,
+            "x2": 3,
+            "x3": -1.082,
+            "results": 0.471
+          },
+          {
+            "x1": 3,
+            "x2": 3,
+            "x3": -0.71,
+            "results": 0.471
+          },
+          {
+            "x1": 3,
+            "x2": 3,
+            "x3": -1.419,
+            "results": 0.471
+          },
+          {
+            "x1": 3,
+            "x2": 3,
+            "x3": 1.534,
+            "results": 0.471
+          },
+          {
+            "x1": 3,
+            "x2": 3,
+            "x3": 0.692,
+            "results": 0.471
+          },
+          {
+            "x1": 4,
+            "x2": 2,
+            "x3": 0.867,
+            "results": 3.415
+          },
+          {
+            "x1": 3,
+            "x2": 3,
+            "x3": -1.118,
+            "results": null
+          }
+        ],
+        "rClass": "data.frame",
+        "rColClasses": {
+          "x1": "numeric",
+          "x2": "numeric",
+          "x3": "numeric",
+          "results": "numeric"
+        },
+        "rColnames": [
+          "x1",
+          "x2",
+          "x3",
+          "results"
+        ],
+        "rColHeaders": [
+          "x1",
+          "x2",
+          "x3",
+          "results"
+        ],
+        "rRowHeaders": null,
+        "rDataDim": [
+          21,
+          4
+        ],
+        "selectCallback": false,
+        "colHeaders": [
+          "x1",
+          "x2",
+          "x3",
+          "results"
+        ],
+        "rowHeaders": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21"
+        ],
+        "columns": [
+          {
+            "type": "numeric",
+            "numericFormat": {
+              "pattern": "0.00"
+            },
+            "renderer": "customRenderer",
+            "default": null
+          },
+          {
+            "type": "numeric",
+            "numericFormat": {
+              "pattern": "0.00"
+            },
+            "renderer": "customRenderer",
+            "default": null
+          },
+          {
+            "type": "numeric",
+            "numericFormat": {
+              "pattern": "0.00"
+            },
+            "renderer": "customRenderer",
+            "default": null
+          },
+          {
+            "type": "numeric",
+            "numericFormat": {
+              "pattern": "0.00"
+            },
+            "renderer": "customRenderer",
+            "default": null
+          }
+        ],
+        "width": null,
+        "height": null,
+        "debug": 0,
+        "search": false,
+        "stretchH": "all",
+        "comments": false,
+        "contextMenu": {
+          "items": {
+            "row_above": [
+
+            ],
+            "row_below": [
+
+            ],
+            "remove_row": [
+
+            ],
+            "hsep3": {
+              "name": "---------"
+            },
+            "undo": [
+
+            ],
+            "redo": [
+
+            ],
+            "hsep4": {
+              "name": "---------"
+            },
+            "alignment": [
+
+            ]
+          }
+        }
+      },
+      "evals": [
+        "columns.0.renderer",
+        "columns.1.renderer",
+        "columns.2.renderer",
+        "columns.3.renderer"
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+
+      ]
+    }
+  }
+}
