@@ -505,4 +505,22 @@
             <upper>200</upper>
         </dimension>
     </objectiveFunction>
+    <objectiveFunction>
+        <name>funSlurmTest</name>
+        <vectorized>false</vectorized>
+        <dimension>
+            <name>X1</name>
+            <type>numeric</type>
+            <lower>-5</lower>
+            <amount>1</amount>
+            <upper>1000</upper>
+        </dimension>
+        <dimension>
+            <name>X2</name>
+            <type>numeric</type>
+            <lower>-5</lower>
+            <amount>1</amount>
+            <upper>200</upper>
+        </dimension>
+    </objectiveFunction>
 </spotConfig>
