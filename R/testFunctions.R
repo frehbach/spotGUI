@@ -45,7 +45,13 @@ funDDMO <- function(vec, a=1, b=5.1/(4*pi^2), c=5/pi, r=6, s=10, t=1/(8*pi), eva
 }
 ###############
 
-funSlurmTest <- wrapBatchTools(funDDMO,
-                               clusterFunction = batchtools::makeClusterFunctionsSlurm(
-                                   system.file("slurm.tmpl",package = "spotGUI")),
-                               resources = list(ncpus = 1, walltime = 600))
+funSlurmTest <- function(x){
+    if(!exists("slurmExportedTestFunction")){
+        slurmExportedTestFunction <<- wrapBatchTools(funDDMO,clusterFunction = batchtools::makeClusterFunctionsSlurm(
+                                                         system.file("slurm.tmpl",package = "spotGUI")),
+                                                     resources = list(ncpus = 1, walltime = 600))
+    }
+    slurmExportedTestFunction(x)
+}
+
+
