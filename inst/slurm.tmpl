@@ -7,11 +7,11 @@ log.file = paste0(dir,log.file)
 #SBATCH --job-name=<%= job.name %>
 #SBATCH --output=<%= log.file %>
 #SBATCH --error=<%= log.file %>
-#SBATCH --time=500
+#SBATCH --time=100
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=<%= ifelse(is.null(resources$ncpus),1,resources$ncpus) %>
 #SBATCH --mem-per-cpu=<%= resources$memory %>
-#SBATCH --partition=owos
+#SBATCH --partition=gecco
 
 ## Run R:
 ## we merge R output with stdout from SLURM, which gets then logged via --output option
