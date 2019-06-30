@@ -510,17 +510,10 @@
         <vectorized>false</vectorized>
         <dimension>
             <name>X1</name>
-            <type>numeric</type>
-            <lower>-5</lower>
-            <amount>1</amount>
-            <upper>1000</upper>
-        </dimension>
-        <dimension>
-            <name>X2</name>
-            <type>numeric</type>
-            <lower>-5</lower>
-            <amount>1</amount>
-            <upper>200</upper>
+            <type>integer</type>
+            <lower>0</lower>
+            <amount>49</amount>
+            <upper>7</upper>
         </dimension>
     </objectiveFunction>
 </spotConfig>
